@@ -1,0 +1,3 @@
+FROM gradle:7.0-jdk11
+WORKDIR /app
+EXPOSE 8081 5005
