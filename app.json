@@ -1,5 +1,5 @@
 {
-  "name": "sha-book-seller",
+  "name": "book-shop-backend-spring",
   "buildpacks": [
     {
       "url": "heroku/gradle"
