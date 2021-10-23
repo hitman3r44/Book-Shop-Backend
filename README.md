@@ -92,3 +92,9 @@ GET /api/purchase-history HTTP/1.1
 Host: localhost:8080
 Authorization: Bearer ...user or admin
 ```
+
+#### Heroku Url
+
+```
+https://book-shop-backend-spring.herokuapp.com/
+```
