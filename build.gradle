@@ -2,7 +2,12 @@ plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+// 	id 'org.hidetake.swagger.generator' version '2.9.2'
+	id 'maven-publish'
 }
+
+def springfoxVersion = '2.9.2'
+def springfoxUiVersion = '2.9.2'
 
 group = 'com.sha'
 version = '0.0.1-SNAPSHOT'
@@ -13,6 +18,23 @@ configurations {
 		extendsFrom annotationProcessor
 	}
 }
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.sha'
+            artifactId = 'my-artifact'
+            version = '1.0-SNAPSHOT'
+            from components.java
+        }
+    }
+}
+
+// swaggerSources {
+//   petstore {
+//     inputFile = file('petstore.yaml')
+//   }
+// }
 
 repositories {
 	mavenCentral()
@@ -27,9 +49,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
-    implementation 'org.springframework.boot:spring-boot-devtools'
-    compileOnly 'org.projectlombok:lombok'
+//     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
+	compileOnly 'org.projectlombok:lombok'
+	compileOnly "io.springfox:springfox-swagger2:${springfoxVersion}"
+    compileOnly "io.springfox:springfox-swagger-ui:${springfoxUiVersion}"
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
